@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { UserService } from "../service/UserService";
+import { database } from "../database";
 
 export class UserController {
     createUser = (req: Request, res: Response) => {
@@ -14,6 +15,6 @@ export class UserController {
     getUsers = (req: Request, res: Response) =>{
         const userService = new UserService()
         const users = userService.getUsers()
-        return res.json(users)
+        return res.status(200).json(users)
     }
 }
