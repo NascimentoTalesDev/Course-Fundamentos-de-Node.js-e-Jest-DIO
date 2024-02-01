@@ -7,9 +7,11 @@ export class UserController {
         const userService = new UserService()
         const { name } = req.body;
         
+        if(!name.length) return res.status(422).json({ message: "O nome não pode ser vazio" })
+        
         userService.createUser(name)
         
-        return res.json({ message: "createUser" })
+        return res.status(201).json({ message: "createUser" })
     }
 
     getUsers = (req: Request, res: Response) =>{
